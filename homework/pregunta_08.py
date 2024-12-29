@@ -31,7 +31,7 @@ def pregunta_08():
     # Inicializar un diccionario para almacenar las letras únicas por valor de la columna 2
     associations = {}
 
-    with open('files\input\data.csv', 'r') as file:
+    with open('files\\input\\data.csv', 'r') as file:
         for line in file:
             # Separar la línea por tabulación para obtener las columnas
             columns = line.strip().split('\t')
