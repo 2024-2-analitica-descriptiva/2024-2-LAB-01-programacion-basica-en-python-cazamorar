@@ -19,7 +19,7 @@ def pregunta_11():
 
     sums = {}
 
-    with open('files\input\data.csv', 'r') as file:
+    with open('files/input/data.csv', 'r') as file:
         for line in file:
             # Separar la línea por tabulación para obtener las columnas
             columns = line.strip().split('\t')
