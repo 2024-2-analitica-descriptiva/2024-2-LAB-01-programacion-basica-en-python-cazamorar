@@ -20,3 +20,21 @@ def pregunta_10():
 
 
     """
+
+    # Inicializar una lista para almacenar los resultados
+    result = []
+
+    with open('files\input\data.csv', 'r') as file:
+        for line in file:
+            # Separar la línea por tabulación para obtener las columnas
+            columns = line.strip().split('\t')
+            if len(columns) > 4:
+                letter = columns[0]
+                col4_count = len(columns[3].split(','))
+                col5_count = len(columns[4].split(','))
+                result.append((letter, col4_count, col5_count))
+    
+    return result
+
+
+#print(pregunta_10())

@@ -16,3 +16,28 @@ def pregunta_11():
 
 
     """
+
+    sums = {}
+
+    with open('files\input\data.csv', 'r') as file:
+        for line in file:
+            # Separar la línea por tabulación para obtener las columnas
+            columns = line.strip().split('\t')
+            if len(columns) > 4:
+                value = int(columns[1])
+                letters = columns[3].split(',')
+                
+                for letter in letters:
+                    # Sumar los valores en la columna 2 para cada letra de la columna 4
+                    if letter in sums:
+                        sums[letter] += value
+                    else:
+                        sums[letter] = value
+    
+    # Ordenar el diccionario por las claves (letras) alfabéticamente
+    sorted_sums = dict(sorted(sums.items()))
+    
+    return sorted_sums
+
+
+#print(pregunta_11())

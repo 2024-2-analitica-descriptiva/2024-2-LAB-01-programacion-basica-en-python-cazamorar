@@ -25,3 +25,26 @@ def pregunta_07():
      (9, ['A', 'B', 'E', 'A', 'A', 'C'])]
 
     """
+
+    # Inicializar un diccionario para almacenar las listas de letras por valor de la columna 2
+    associations = {}
+    
+    with open('files\input\data.csv', 'r') as file:
+        for line in file:
+            # Separar la línea por tabulación para obtener las columnas
+            columns = line.strip().split('\t')
+            # Obtener el valor de la columna 2 y la letra de la columna 1
+            value = int(columns[1])
+            letter = columns[0]
+            # Agregar la letra a la lista correspondiente en el diccionario
+            if value in associations:
+                associations[value].append(letter)
+            else:
+                associations[value] = [letter]
+    
+    # Convertir el diccionario en una lista de tuplas y ordenar por el valor de la columna 2
+    result = sorted(associations.items())
+    
+    return result
+
+#print(pregunta_07())

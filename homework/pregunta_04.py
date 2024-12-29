@@ -26,3 +26,28 @@ def pregunta_04():
      ('12', 3)]
 
     """
+
+    month_counts = {}
+    
+
+    with open('files\input\data.csv', 'r') as file:
+        for line in file:
+            # Separar la línea por tabulación para obtener las columnas
+            columns = line.strip().split('\t')
+            # Obtener la fecha de la tercera columna
+            date = columns[2]
+            # Extraer el mes de la fecha (YYYY-MM-DD)
+            month = date.split('-')[1]
+            # Contar la ocurrencia del mes
+            if month in month_counts:
+                month_counts[month] += 1
+            else:
+                month_counts[month] = 1
+    
+    # Convertir el diccionario en una lista de tuplas y ordenar alfabéticamente por el mes
+    result = sorted(month_counts.items())
+    
+    return result
+
+
+#print(pregunta_04())

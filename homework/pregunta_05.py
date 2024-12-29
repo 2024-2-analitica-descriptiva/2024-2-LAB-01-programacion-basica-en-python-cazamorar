@@ -15,3 +15,28 @@ def pregunta_05():
     [('A', 9, 2), ('B', 9, 1), ('C', 9, 0), ('D', 8, 3), ('E', 9, 1)]
 
     """
+
+    min_max_values = {}
+    
+    # Abrir el archivo y leer línea por línea
+    with open('files\input\data.csv', 'r') as file:
+   
+        for line in file:
+            # Separar la línea por tabulación para obtener las columnas
+            columns = line.strip().split('\t')
+            # Obtener la primera columna (letra) y la segunda columna (valor)
+            letter = columns[0]
+            value = int(columns[1])
+            # Actualizar los valores máximo y mínimo para la letra
+            if letter in min_max_values:
+                min_max_values[letter]['max'] = max(min_max_values[letter]['max'], value)
+                min_max_values[letter]['min'] = min(min_max_values[letter]['min'], value)
+            else:
+                min_max_values[letter] = {'max': value, 'min': value}
+    
+    # Convertir el diccionario en una lista de tuplas y ordenar alfabéticamente por la letra
+    result = [(letter, values['max'], values['min']) for letter, values in sorted(min_max_values.items())]
+    
+    return result
+
+#print(pregunta_05())

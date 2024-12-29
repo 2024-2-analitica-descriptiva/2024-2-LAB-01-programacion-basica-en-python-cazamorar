@@ -26,3 +26,30 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+
+    value_ranges = {}
+    
+    with open('files\input\data.csv', 'r') as file:
+        for line in file:
+            # Separar la línea por tabulación para obtener las columnas
+            columns = line.strip().split('\t')
+            # Obtener la quinta columna (el diccionario codificado)
+            encoded_dict = columns[4]
+            # Separar las entradas del diccionario
+            entries = encoded_dict.split(',')
+            for entry in entries:
+                key, value = entry.split(':')
+                value = int(value)
+                if key in value_ranges:
+                    value_ranges[key]['min'] = min(value_ranges[key]['min'], value)
+                    value_ranges[key]['max'] = max(value_ranges[key]['max'], value)
+                else:
+                    value_ranges[key] = {'min': value, 'max': value}
+    
+    # Convertir el diccionario en una lista de tuplas y ordenar alfabéticamente por la clave
+    result = [(key, values['min'], values['max']) for key, values in sorted(value_ranges.items())]
+    
+    return result
+
+#print(pregunta_06())
+
