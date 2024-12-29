@@ -19,7 +19,7 @@ def pregunta_05():
     min_max_values = {}
     
     # Abrir el archivo y leer línea por línea
-    with open('files\\input\\data.csv', 'r') as file:
+    with open('files/input/data.csv', 'r') as file:
    
         for line in file:
             # Separar la línea por tabulación para obtener las columnas
